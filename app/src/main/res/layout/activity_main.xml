@@ -32,18 +32,22 @@
         android:indeterminate="true"
         android:indeterminateDrawable="@drawable/progress"
         />
-    
+
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
         <GridView
-            android:id="@+id/grid_pictureMovies"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:footerDividersEnabled="false"
-            android:padding="1dp"
-            android:numColumns="2" />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/gridView_HomePage"
+        android:columnWidth="180dp"
+        android:numColumns="auto_fit"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="0dp"
+        >
+
+    </GridView>
     </LinearLayout>
 </RelativeLayout>
