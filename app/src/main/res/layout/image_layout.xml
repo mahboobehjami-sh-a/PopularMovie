@@ -2,10 +2,14 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent">
-
     <ImageView
-        android:id="@+id/imgMovie"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:src="https://image.tmdb.org/t/p/w500/TtoKJVEAZ56GCJN230MNOAvUCO.jpg"/>
+        android:id="@+id/poster"
+        android:layout_width="190dp"
+        android:layout_height="250dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="3dp"
+        android:src=""/>
+
+    <com.master.glideimageview.GlideImageView
+        />
 </RelativeLayout>
