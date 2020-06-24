@@ -23,6 +23,7 @@
         android:background="@color/backgroundRed"
         android:textColor="@color/gray"
         style="@style/StyleSearch"/>
+    s
 
     <ProgressBar
         android:id="@+id/progress_circular_home"
