@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -39,7 +40,8 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull ImageAdapter.ViewHolder holder, int position) {
         Movies movies=totalDetailMovie.get(position);
-        Glide.with(context).load(movies.getPoster_Path()).into(holder.imgPoster);
+        holder.tvtitle.setText(totalDetailMovie.get(position).getTitle());
+        Glide.with(context).load(movies.getPoster_Path()).centerCrop().placeholder(R.drawable.one).into(holder.imgPoster);
     }
 
     @Override
@@ -49,10 +51,12 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ViewHolder> 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
+        TextView tvtitle;
+
         ImageView imgPoster;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            /* tvtitle */
+            tvtitle=itemView.findViewById(R.id.tvconnect);
             imgPoster=itemView.findViewById(R.id.imgPoster);
             itemView.setOnClickListener(new  View.OnClickListener(){
                 @Override

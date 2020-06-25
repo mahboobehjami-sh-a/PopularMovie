@@ -9,7 +9,6 @@ public class Movies {
     String director;
     String description;
 
-
     public Movies(String poster_path, String title, String director, String description){
         this.poster_path=poster_path;
         this.title=title;

@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements ClickPosterListen
                     progressBar.setVisibility(View.GONE);
                     Log.e(TAG, "on Response:" + response);
                     try {
-                        JSONArray jsonArray = new JSONArray(response);
+                        JSONArray jsonArray = response.getJSONArray("results");
                         for (int i = 0; i < jsonArray.length(); i++) {
                             try {
                                 JSONObject data = jsonArray.getJSONObject(i);
@@ -81,10 +81,7 @@ public class MainActivity extends AppCompatActivity implements ClickPosterListen
                                 title = data.getString("title");
                                 description=data.getString("overview");
                                 listOfPupuler.add(new Movies(poster_path,title,director,description));
-
-                                //check tru connection
-                                if(listOfPupuler.size()>0)
-                                    textView.setText("okkkkkkkkkkkkkkkkk");
+                                textView.setText(title);
 
                             }catch (JSONException e){
                                 e.printStackTrace();
@@ -119,5 +116,7 @@ public class MainActivity extends AppCompatActivity implements ClickPosterListen
 
     @Override
     public void onClickPoster(Movies movies, ImageView imageView) {
+
+
     }
 }
