@@ -25,15 +25,7 @@
         style="@style/StyleSearch"
         />
 
-    <Button
-        android:id="@+id/next"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
-        android:gravity="center"
-        android:layout_marginTop="400dp"
-        android:layout_marginLeft="130dp"
-        android:text="next"
-        android:textColor="@color/black"/>
+
 
     <ProgressBar
         android:id="@+id/progress_circular_home"
@@ -44,21 +36,18 @@
         android:indeterminateDrawable="@drawable/progress"
         />
 
-    <LinearLayout
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_posters"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        tools:listitem="@layout/image_layout"/>
+    <TextView
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="120dp"
+        android:layout_marginTop="200dp"
+        android:text="m"
+        android:id="@+id/tvconnect"/>
 
-        <GridView
-            android:id="@+id/gridView_HomePage"
-            android:layout_marginTop="80dp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:columnWidth="180dp"
-            android:numColumns="auto_fit"
-            android:stretchMode="columnWidth"
-            android:verticalSpacing="0dp">
-
-        </GridView>
-    </LinearLayout>
 </RelativeLayout>

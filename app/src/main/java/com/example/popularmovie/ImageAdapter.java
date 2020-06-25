@@ -1,6 +1,5 @@
 package com.example.popularmovie;
 
-import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,47 +7,60 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class ImageAdapter extends BaseAdapter {
+public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ViewHolder>  {
 
-    ArrayList<Movies> posters_urlForImage;
+    Context context;
+    ArrayList<Movies> totalDetailMovie;
+    ClickPosterListener clickPosterListener;
 
-    private int[] image_src={};
-    Context ctx;
+    public ImageAdapter(Context context,ArrayList<Movies> totalDetailMovie,ClickPosterListener clickPosterListener){
+        this.context=context;
+        this.totalDetailMovie=totalDetailMovie;
+        this.clickPosterListener=clickPosterListener;
+    }
 
 
-     ImageAdapter(Context ctx,ArrayList<Movies> posters_urlForImage){
-        this.ctx=ctx;
-        this.posters_urlForImage=posters_urlForImage;
+
+    @NonNull
+    @Override
+    public ImageAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view=LayoutInflater.from(context).inflate(R.layout.image_layout,parent,false);
+        return new ViewHolder(view);
     }
 
     @Override
-    public int getCount() {
-        return posters_urlForImage.size();
+    public void onBindViewHolder(@NonNull ImageAdapter.ViewHolder holder, int position) {
+        Movies movies=totalDetailMovie.get(position);
+        Glide.with(context).load(movies.getPoster_Path()).into(holder.imgPoster);
     }
 
     @Override
-    public Object getItem(int position) { return posters_urlForImage.get(position); }
-
-    @Override
-    public long getItemId(int position) {
-        return position;
+    public int getItemCount() {
+        return totalDetailMovie.size();
     }
 
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        View gridView=convertView;
-        if(gridView==null) {
-            LayoutInflater inflater = (LayoutInflater) ctx.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            gridView=inflater.inflate(R.layout.image_layout,null);
+    public class ViewHolder extends RecyclerView.ViewHolder {
+
+        ImageView imgPoster;
+        public ViewHolder(@NonNull View itemView) {
+            super(itemView);
+            /* tvtitle */
+            imgPoster=itemView.findViewById(R.id.imgPoster);
+            itemView.setOnClickListener(new  View.OnClickListener(){
+                @Override
+                public void onClick(View v){
+                    clickPosterListener.onClickPoster(totalDetailMovie.get(getAdapterPosition()),imgPoster);
+                }
+            });
 
         }
-        ImageView imageView=(ImageView)gridView.findViewById((R.id.poster));
-        Glide.with(ctx).load(posters_urlForImage.get(position)).into(imageView);
-       /* imageView.setImageResource(image_src[position]);*/
-        return gridView;
     }
 }
