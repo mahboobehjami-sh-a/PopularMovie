@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         gridView=(GridView)findViewById(R.id.gridView_HomePage);
         progressBar=(ProgressBar)findViewById(R.id.progress_circular_home);
         getDataFromAPI();
-        ImageAdapter imageAdapter=new ImageAdapter(this);
+        ImageAdapter imageAdapter=new ImageAdapter(this,posters_urlForImage);
         gridView.setAdapter(imageAdapter);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
