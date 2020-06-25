@@ -6,6 +6,7 @@
     android:orientation="vertical"
     android:tag="cards main container"
     android:background="@color/gray">
+
     <androidx.cardview.widget.CardView
         android:layout_width="350dp"
         android:layout_height="match_parent"
